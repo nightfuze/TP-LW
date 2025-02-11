@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Html
+
+@model List<DatabaseCourseModel>
+
+@{
+    ViewData["Title"] = "Список курсов по базам данных";
+}
+
+@functions {
+    public HtmlString RenderDatabaseCourseList(List<DatabaseCourseModel> courses)
+    {
+        var html = "<table class='table'><thead><tr><th>ID курса</th><th>Название курса</th><th>Описание</th><th>Преподаватель</th><th>Дата начала</th><th>Дата окончания</th><th>Телефон преподавателя</th></tr></thead><tbody>";
+
+        int i = 0;
+        while (i < courses.Count)
+        {
+            var course = courses[i];
+            html += $"<tr><td>{course.CourseId}</td><td>{course.CourseName}</td><td>{course.Description}</td><td>{course.Teacher}</td><td>{course.StartDate.ToShortDateString()}</td><td>{course.EndDate.ToShortDateString()}</td><td>{course.TeacherPhone}</td><td><a href='/DatabaseCourse/Details/{course.CourseId}' class='btn btn-secondary'>Просмотр</a></td></tr>";
+            i++;
+        }
+
+        html += "</tbody></table>";
+        return new HtmlString(html);
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("Добавить новый курс", "Create", null, null, new { @class = "btn btn-primary" })
+
+@{
+    bool useInternalMethod = TempData["UseInternalMethod"] as bool? ?? false;
+
+    if (useInternalMethod)
+    {
+        @RenderDatabaseCourseList(Model)
+    }
+    else
+    {
+        @LabWork5.Helpers.DatabaseCourseHelper.RenderDatabaseCourseList(Model)
+    }
+}
+
+<p>
+</p>

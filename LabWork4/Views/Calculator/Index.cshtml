@@ -1,0 +1,70 @@
+﻿@model LabWork4.Models.CalculatorModel
+
+@{
+	ViewData["Title"] = "Калькулятор";
+}
+
+<h1>Калькулятор</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.operandA, "Первый операнд")
+                @Html.TextBoxFor(m => m.operandA, new { @class = "textBoxStyle" })
+                @Html.ValidationMessageFor(m => m.operandA)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.operandB, "Второй операнд")
+                @Html.TextBoxFor(m => m.operandB, new { @class = "textBoxStyle" })
+                @Html.ValidationMessageFor(m => m.operandB)
+            </div>
+
+            <div class="operations-group">
+                <div class="operation-item">
+                    @Html.RadioButtonFor(m => m.operation, "+", new { id = "sum" })
+                    <label for="sum">+</label>
+                </div>
+                <div class="operation-item">
+                    @Html.RadioButtonFor(m => m.operation, "-", new { id = "sub" })
+                    <label for="sub">-</label>
+                </div>
+                <div class="operation-item">
+                    @Html.RadioButtonFor(m => m.operation, "*", new { id = "mul" })
+                    <label for="mul">*</label>
+                </div>
+                <div class="operation-item">
+                    @Html.RadioButtonFor(m => m.operation, "/", new { id = "div" })
+                    <label for="div">/</label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" type="submit" name="action" value="calculate">Рассчитать</button>
+                <button class="btn btn-secondary" type="submit" name="action" value="clear">Очистить</button>
+            </div>
+        }
+
+        @if (ViewBag.MessageError != null)
+        {
+            <p class="error-message">@ViewBag.MessageError</p>
+        }
+        else if (Model != null)
+        {
+            <p class="result">Результат: @Model.result</p>
+        }
+
+        <div class="action-link">
+            @Html.ActionLink("Представление операции вычисления", "OperationView", "Calculator")
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

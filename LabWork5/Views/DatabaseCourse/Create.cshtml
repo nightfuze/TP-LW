@@ -1,0 +1,38 @@
+﻿@model DatabaseCourseModel;
+
+@{
+    ViewData["Title"] = "Добавление курса";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseName)
+        @Html.EditorFor(m => m.CourseName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.EditorFor(m => m.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Teacher)
+        @Html.EditorFor(m => m.Teacher)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.EditorFor(m => m.StartDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.EditorFor(m => m.EndDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TeacherPhone)
+        @Html.EditorFor(m => m.TeacherPhone)
+    </div>
+    <div class="form-buttons">
+        <button class="btn btn-primary" type="submit">Добавить курс</button>
+    </div>
+}

@@ -1,0 +1,18 @@
+﻿@model LabWork5.Models.DatabaseCourseModel
+
+@{
+    ViewData["Title"] = "Просмотр курса";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.CourseId }, new { @class = "btn btn-primary" })
+    <div class="label-container">
+        @Html.LabelForModel()
+    </div>
+    <div class="display-container">
+        @Html.DisplayForModel()
+    </div>
+</div>

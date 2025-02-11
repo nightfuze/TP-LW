@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Представление операции";
+}
+
+<h1>Представление операции вычисления</h1>
+
+@if (ViewBag.OpView != null)
+{
+    <p>@ViewBag.OpView</p>
+}
+else
+{
+    <p>Еще не было выполнено операции вычисления.</p>
+}
+
+@Html.ActionLink("Назад к калькулятору", "Index", "Calculator")
+

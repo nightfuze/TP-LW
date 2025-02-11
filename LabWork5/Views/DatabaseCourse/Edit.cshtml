@@ -1,0 +1,48 @@
+﻿@model LabWork5.Models.DatabaseCourseModel
+
+@{
+    ViewData["Title"] = "Редактирование курса";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+        <div class="form-group">
+            @Html.LabelFor(m => m.CourseName)
+            @Html.EditorFor(m => m.CourseName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.EditorFor(m => m.Description)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Teacher)
+            @Html.EditorFor(m => m.Teacher)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.StartDate)
+            @Html.EditorFor(m => m.StartDate)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.EndDate)
+            @Html.EditorFor(m => m.EndDate)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TeacherPhone)
+            @Html.EditorFor(m => m.TeacherPhone)
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Сохранить</button>
+        </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
+
