@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Детали базы данных";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewBag.Title</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Идентификатор:</dt>
+                <dd class="col-sm-9">@ViewBag.Id</dd>
+
+                <dt class="col-sm-3">Название базы данных:</dt>
+                <dd class="col-sm-9">@ViewBag.DatabaseName</dd>
+
+                <dt class="col-sm-3">Тип базы данных:</dt>
+                <dd class="col-sm-9">@ViewBag.DatabaseType</dd>
+
+                <dt class="col-sm-3">Активна:</dt>
+                <dd class="col-sm-9">@(ViewBag.IsActive == "True" ? "Да" : "Нет")</dd>
+
+                <dt class="col-sm-3">Описание:</dt>
+                <dd class="col-sm-9">@ViewBag.Description</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        @Html.ActionLink("Вернуться на главную", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+</div>

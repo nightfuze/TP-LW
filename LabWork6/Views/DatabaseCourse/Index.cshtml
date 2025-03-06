@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Базы данных";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewBag.Title</h2>
+
+    @using (Html.BeginForm("Index", "DatabaseCourse", FormMethod.Post))
+    {
+        <div class="mb-3">
+            @Html.Label("Идентификатор:", new { 
+                @for="idDb",
+                @class = "form-label" })
+            @Html.TextBox("Id", null, new { 
+                @id="idDb",
+                @class = "form-control", 
+                type = "number", 
+                required = "required", 
+                placeholder = "Введите идентификатор" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Название базы данных:", new { 
+                @for="dbName",
+                @class = "form-label" })
+            @Html.TextBox("DatabaseName", null, new {
+                @id="dbName",
+                @class = "form-control", 
+                required = "required", 
+                placeholder = "Введите название базы данных" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Тип базы данных:", new { 
+                @for="dbType",
+                @class = "form-label" })
+            @Html.DropDownList("DatabaseType", new SelectList(new[] {
+                "Реляционные",
+                "Документо-ориентированные",
+                "Векторная",
+                "Ключ-значение",
+                "Графовые",
+                "Объектно-ориентированные",
+                }), new {
+                    @id="dbType",
+                    @class = "form-select",
+                    required = "required" })
+        </div>
+
+        <div class="mb-3 form-check">
+            @Html.CheckBox("IsActive", new { 
+                @id="active",
+                @class = "form-check-input" })
+            @Html.Label("Активна", new { 
+                @for="active",
+                @class = "form-check-label" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Описание:", new { 
+                @for="desc",
+                @class = "form-label" })
+            @Html.TextArea("Description", new { 
+                @id="desc",
+                @class = "form-control",
+                rows = "3", 
+                placeholder = "Введите описание базы данных" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    }
+</div>

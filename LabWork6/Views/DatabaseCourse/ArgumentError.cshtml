@@ -1,0 +1,40 @@
+﻿@model System.Exception
+
+@{
+    ViewBag.Title = "Ошибка аргумента";
+    var queryParams = Context.Request.QueryString;
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">@ViewBag.Title</h2>
+
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Ошибка в параметрах запроса!</h4>
+        <p>@Model.Message</p>
+        <hr>
+        <h5>Переданные параметры:</h5>
+        <div>
+            @if (queryParams.Count > 0)
+            {
+                <ul class="list-group">
+                    @for (int i = 0; i < queryParams.Count; i++)
+                    {
+                        <li class="list-group-item d-flex align-items-center">
+                            <strong>@queryParams.GetKey(i)</strong>
+                            <span>=@queryParams.Get(i)</span>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>Параметры не переданы</p>
+            }
+        </div>
+    </div>
+
+    <div class="mt-4">
+        @Html.ActionLink("Попробовать снова", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+

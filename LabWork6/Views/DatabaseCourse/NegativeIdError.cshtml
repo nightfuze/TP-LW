@@ -1,0 +1,31 @@
+﻿@model System.Collections.Generic.IDictionary<string, object>
+
+@{
+    ViewBag.Title = "Некорректный ID";
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">@ViewBag.Title</h2>
+
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Ошибка идентификатора ID</h4>
+        <p>Переданный идентификатор отрицательный. Пожалуйста, проверьте введенные данные и попробуйте снова.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Параметры запроса</h5>
+            <dov class="col">
+                @foreach (var param in Model)
+                {
+                    <strong>@param.Key: </strong>
+                    <span>@param.Value</span>
+                }
+            </dov>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        @Html.ActionLink("Вернуться на главную", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
